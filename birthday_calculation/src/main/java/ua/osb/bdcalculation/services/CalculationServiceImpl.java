@@ -24,13 +24,13 @@ public class CalculationServiceImpl implements CalculationService {
         }
     }
 
-    private DaysTillBirthdayDTO calculateForUpcomingThisYear(LocalDate birthDateForCurrentYear, LocalDate currentDate) {
-        Integer numberOfDays = (int) DAYS.between(birthDateForCurrentYear, currentDate);
+    DaysTillBirthdayDTO calculateForUpcomingThisYear(LocalDate birthDateForCurrentYear, LocalDate currentDate) {
+        Integer numberOfDays = (int) DAYS.between(currentDate, birthDateForCurrentYear);
         return new DaysTillBirthdayDTO(numberOfDays);
     }
 
-    private DaysTillBirthdayDTO calculateForUpcomingNextYear(LocalDate birthdayForCurrentYear, LocalDate currentDate) {
-        var birthdayNextYear = birthdayForCurrentYear.plusYears(1);
+    DaysTillBirthdayDTO calculateForUpcomingNextYear(LocalDate birthdayForCurrentYear, LocalDate currentDate) {
+        val birthdayNextYear = birthdayForCurrentYear.plusYears(1);
         return calculateForUpcomingThisYear(birthdayNextYear, currentDate);
     }
 

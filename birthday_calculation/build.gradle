@@ -7,8 +7,13 @@ apply plugin: 'io.spring.dependency-management'
 sourceCompatibility = 9
 targetCompatibility = 9
 
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
     compile("org.springframework.boot:spring-boot-starter-web")
-    testCompile("junit:junit")
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
 }
